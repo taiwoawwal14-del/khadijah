@@ -210,11 +210,13 @@
     position: relative;
     border-radius: 22px; overflow: hidden;
     border: 2px solid rgba(181,97,122,0.35);
-    aspect-ratio: 4/5;
+    background: rgba(255,255,255,0.04);
     box-shadow: 0 10px 40px rgba(0,0,0,0.5);
     transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
     cursor: default;
     opacity: 0; transform: scale(0.9) translateY(20px);
+    display: flex;
+    flex-direction: column;
   }
   .photo-card.visible { opacity: 1; transform: scale(1) translateY(0); }
   .photo-card:hover {
@@ -223,7 +225,8 @@
     border-color: var(--star);
   }
   .photo-card img {
-    width: 100%; height: 100%;
+    width: 100%;
+    aspect-ratio: 4/5;
     object-fit: cover; object-position: top;
     display: block;
     transition: transform 0.6s ease;
@@ -231,15 +234,14 @@
   .photo-card:hover img { transform: scale(1.08); }
 
   .photo-card::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(13,10,26,0.92) 0%, rgba(13,10,26,0.35) 35%, transparent 60%);
-    pointer-events: none;
+    content: none;
   }
   .photo-caption {
-    position: absolute; left: 0; right: 0; bottom: 0;
+    position: relative;
     padding: 1.6rem 1.4rem 1.3rem;
     z-index: 2;
+    background: linear-gradient(180deg, rgba(13,10,26,0.95), rgba(26,16,48,0.98));
+    min-height: 150px;
   }
   .photo-caption .pc-id {
     font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
@@ -587,7 +589,7 @@
 <section id="hero">
   <div class="hero-photo-ring">
     <!-- Image 1 - teal hijab selfie -->
-    <img class="hero-photo" src="WhatsApp_Image_2026-06-21_at_1_16_25_PM.jpeg"
+    <img class="hero-photo" src="WhatsApp Image 2026-06-21 at 1.16.25 PM.jpeg"
          alt="Khadijah"
          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
     <div class="hero-photo-placeholder" style="display:none">🌸</div>
@@ -647,7 +649,7 @@
   </div>
   <div class="photos-grid">
     <div class="photo-card">
-      <img src="WhatsApp_Image_2026-06-21_at_1_16_25_PM.jpeg" alt="Khadijah"
+      <img src="WhatsApp Image 2026-06-21 at 1.16.25 PM.jpeg" alt="Khadijah"
            onerror="this.parentNode.style.background='linear-gradient(135deg,#b5617a,#1a1030)';this.remove()">
       <div class="photo-caption">
         <p class="pc-id">No. 01 — Sunlit</p>
@@ -655,7 +657,7 @@
       </div>
     </div>
     <div class="photo-card">
-      <img src="WhatsApp_Image_2026-06-18_at_9_17_25_PM.jpeg" alt="Khadijah"
+      <img src="WhatsApp Image 2026-06-18 at 8.56.36 PM.jpeg" alt="Khadijah"
            onerror="this.parentNode.style.background='linear-gradient(135deg,#e07f9a,#0d0a1a)';this.remove()">
       <div class="photo-caption">
         <p class="pc-id">No. 02 — Glow</p>
@@ -663,7 +665,7 @@
       </div>
     </div>
     <div class="photo-card">
-      <img src="WhatsApp_Image_2026-06-18_at_8_56_36_PM.jpeg" alt="Khadijah"
+      <img src="WhatsApp Image 2026-06-19 at 9.41.51 PM.jpeg" alt="Khadijah"
            onerror="this.parentNode.style.background='linear-gradient(135deg,#2a0f2e,#b5617a)';this.remove()">
       <div class="photo-caption">
         <p class="pc-id">No. 03 — Soft</p>
@@ -671,7 +673,7 @@
       </div>
     </div>
     <div class="photo-card">
-      <img src="WhatsApp_Image_2026-06-19_at_9_41_51_PM.jpeg" alt="Khadijah"
+      <img src="WhatsApp Image 2026-06-18 at 9.17.25 PM.jpeg" alt="Khadijah"
            onerror="this.parentNode.style.background='linear-gradient(135deg,#1a1030,#e07f9a)';this.remove()">
       <div class="photo-caption">
         <p class="pc-id">No. 04 — Cozy</p>
@@ -711,24 +713,7 @@
   </div>
 </section>
 
-<!-- ═══ FINAL LETTER ═══ -->
-<section id="finalletter" style="background: radial-gradient(ellipse at 50% 80%, #2a0f30 0%, var(--night) 70%);">
-  <div class="section-inner">
-    <p class="section-label">Always & Forever</p>
-    <h2 class="section-title">A Letter Just for You</h2>
-    <div class="divider"></div>
-    <div class="pulse-card letter-card">
-      <p>
-        Khadijah, I find myself thinking about the day I'll actually stand in front of you — not through a screen, not through a voice note, but <em>there</em>, in the same room, in the same air. I have rehearsed that first hug more times than I can count. I imagine it will feel like finally putting down something very heavy I didn't realise I'd been carrying.
-        <br/><br/>
-        The distance is just geography. What we have lives in something geography can't touch. Every notification, every late reply, every goodnight that arrives too early — I have kept them all. They are proof that something real is growing between us, and real things are worth waiting for.
-        <br/><br/>
-        I adore the way you are. Completely, effortlessly, undeniably you. And I am grateful every single day that the internet, of all things, is what brought you to me. 🌹
-      </p>
-      <p class="sig">— Written for you, Khadijah. Always.</p>
-    </div>
-  </div>
-</section>
+
 
 <!-- ═══ FOOTER ═══ -->
 <footer>
