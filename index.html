@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For Khadijah 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --night: #0d0a1a;
+    --deep: #1a1030;
+    --rose-gold: #b5617a;
+    --blush: #f0b8c8;
+    --petal: #fce8ef;
+    --star: #ffe4b5;
+    --white: #fff8fb;
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--night);
+    color: var(--white);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+  }
+
+  /* ── STARS ── */
+  #starfield {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    overflow: hidden;
+  }
+  .star {
+    position: absolute;
+    width: 2px; height: 2px;
+    background: var(--star);
+    border-radius: 50%;
+    animation: twinkle var(--d, 3s) ease-in-out infinite alternate;
+    opacity: var(--o, 0.6);
+  }
+  @keyframes twinkle {
+    from { opacity: var(--o); transform: scale(1); }
+    to   { opacity: calc(var(--o) * 0.2); transform: scale(0.5); }
+  }
+
+  /* ── HEARTS ── */
+  .heart-float {
+    position: fixed; bottom: -60px; font-size: 1.6rem;
+    animation: floatUp var(--dur, 8s) linear infinite;
+    opacity: 0; pointer-events: none; z-index: 0;
+    left: var(--lft, 50%);
+    animation-delay: var(--del, 0s);
+  }
+  @keyframes floatUp {
+    0%   { bottom: -60px; opacity: 0; transform: translateX(0) rotate(0deg); }
+    10%  { opacity: 0.7; }
+    90%  { opacity: 0.5; }
+    100% { bottom: 100vh; opacity: 0; transform: translateX(30px) rotate(20deg); }
+  }
+
+  /* ── LAYOUT ── */
+  section { position: relative; z-index: 1; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 2rem 1.5rem;
+    background: radial-gradient(ellipse at 50% 60%, #2a0f2e 0%, var(--night) 70%);
+  }
+  .hero-photo-ring {
+    position: relative;
+    width: 210px; height: 210px;
+    margin-bottom: 2.2rem;
+    animation: floatPhoto 4s ease-in-out infinite;
+  }
+  @keyframes floatPhoto {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+  }
+  .hero-photo-ring::before {
+    content: '';
+    position: absolute; inset: -6px;
+    border-radius: 50%;
+    background: conic-gradient(var(--rose-gold), var(--blush), var(--star), var(--rose-gold));
+    animation: spin 6s linear infinite;
+    z-index: -1;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .hero-photo {
+    width: 210px; height: 210px;
+    border-radius: 50%;
+    object-fit: cover; object-position: top;
+    border: 5px solid var(--night);
+    display: block;
+  }
+  /* placeholder shown if no real image */
+  .hero-photo-placeholder {
+    width: 210px; height: 210px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--rose-gold), var(--deep));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 5rem; border: 5px solid var(--night);
+  }
+
+  #hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 6vw, 3.6rem);
+    font-weight: 700; letter-spacing: 0.02em;
+    background: linear-gradient(135deg, var(--blush) 0%, var(--star) 60%, var(--rose-gold) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeSlideDown 1.4s ease both;
+    line-height: 1.25;
+  }
+  #hero .subtitle {
+    margin-top: 1rem;
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    color: var(--blush); font-weight: 300; letter-spacing: 0.08em;
+    animation: fadeSlideDown 1.8s ease both;
+  }
+  #hero .name-badge {
+    margin-top: 0.6rem;
+    font-family: var(--font-display); font-style: italic;
+    font-size: clamp(1.4rem, 4vw, 2rem); color: var(--star);
+    animation: fadeSlideDown 2.2s ease both;
+  }
+  @keyframes fadeSlideDown {
+    from { opacity: 0; transform: translateY(-28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .scroll-hint {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    color: var(--blush); font-size: 0.75rem; letter-spacing: 0.1em;
+    animation: pulse 2s ease-in-out infinite;
+    text-transform: uppercase;
+  }
+  .scroll-hint span { font-size: 1.4rem; }
+  @keyframes pulse {
+    0%,100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
+    50%      { opacity: 1; transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── SECTION SHARED ── */
+  .section-inner {
+    max-width: 860px; margin: 0 auto;
+    padding: 5rem 1.5rem;
+  }
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--rose-gold); margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+    line-height: 1.3;
+    background: linear-gradient(120deg, var(--blush), var(--star));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 3rem;
+  }
+
+  /* ── OUR STORY ── */
+  #story { background: linear-gradient(180deg, var(--night) 0%, var(--deep) 100%); }
+  .timeline { position: relative; padding-left: 2.5rem; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--rose-gold), var(--blush), transparent);
+  }
+  .tl-item {
+    position: relative; margin-bottom: 3rem;
+    opacity: 0; transform: translateX(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .tl-item.visible { opacity: 1; transform: translateX(0); }
+  .tl-dot {
+    position: absolute; left: -2.9rem; top: 0.35rem;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--rose-gold);
+    border: 3px solid var(--night);
+    box-shadow: 0 0 12px var(--rose-gold);
+  }
+  .tl-date {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--star); margin-bottom: 0.35rem;
+  }
+  .tl-heading {
+    font-family: var(--font-display); font-size: 1.25rem; color: var(--blush);
+    margin-bottom: 0.4rem;
+  }
+  .tl-body { font-size: 0.95rem; color: #c9a8b8; line-height: 1.7; }
+
+  /* ── PHOTOS STRIP ── */
+  #photos { background: var(--deep); padding: 5rem 1.5rem; }
+  .photos-grid {
+    max-width: 1000px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+  }
+  .photo-card {
+    position: relative;
+    border-radius: 22px; overflow: hidden;
+    border: 2px solid rgba(181,97,122,0.35);
+    aspect-ratio: 4/5;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    cursor: default;
+    opacity: 0; transform: scale(0.9) translateY(20px);
+  }
+  .photo-card.visible { opacity: 1; transform: scale(1) translateY(0); }
+  .photo-card:hover {
+    transform: scale(1.035) rotate(-0.6deg);
+    box-shadow: 0 24px 60px rgba(181,97,122,0.55);
+    border-color: var(--star);
+  }
+  .photo-card img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+  .photo-card:hover img { transform: scale(1.08); }
+
+  .photo-card::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(13,10,26,0.92) 0%, rgba(13,10,26,0.35) 35%, transparent 60%);
+    pointer-events: none;
+  }
+  .photo-caption {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 1.6rem 1.4rem 1.3rem;
+    z-index: 2;
+  }
+  .photo-caption .pc-id {
+    font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--star); margin-bottom: 0.4rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .photo-caption .pc-id::before {
+    content: ''; width: 18px; height: 1px; background: var(--star); display: inline-block;
+  }
+  .photo-caption .pc-msg {
+    font-family: var(--font-display); font-style: italic;
+    font-size: 1.05rem; line-height: 1.5; color: var(--petal);
+  }
+
+  /* ── ANTICIPATION ── */
+  #anticipation {
+    background: radial-gradient(ellipse at 50% 30%, #2a0f30 0%, var(--night) 70%);
+  }
+  .pulse-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(181,97,122,0.35);
+    border-radius: 24px; padding: 3rem 2.5rem;
+    position: relative; overflow: hidden;
+    animation: cardPulse 4s ease-in-out infinite;
+  }
+  @keyframes cardPulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(181,97,122,0); }
+    50%      { box-shadow: 0 0 40px 6px rgba(181,97,122,0.25); }
+  }
+  .pulse-card::before {
+    content: '❝';
+    position: absolute; top: -0.5rem; left: 1.5rem;
+    font-size: 6rem; color: rgba(181,97,122,0.15);
+    font-family: var(--font-display); line-height: 1;
+  }
+  .pulse-card p {
+    font-family: var(--font-display); font-style: italic;
+    font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+    line-height: 1.9; color: var(--petal);
+    position: relative; z-index: 1;
+  }
+  .pulse-card .sig {
+    margin-top: 2rem; font-style: normal;
+    font-family: var(--font-body); font-size: 0.85rem;
+    color: var(--rose-gold); letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* ── ADORE BUTTON ── */
+  #adore { background: var(--deep); }
+  .adore-center { text-align: center; }
+  #adoreBtn {
+    display: inline-block;
+    padding: 1rem 2.6rem;
+    background: linear-gradient(135deg, var(--rose-gold), #e07f9a);
+    color: #fff; font-family: var(--font-display); font-size: 1.1rem;
+    border: none; border-radius: 60px; cursor: pointer;
+    box-shadow: 0 6px 30px rgba(181,97,122,0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    letter-spacing: 0.04em;
+  }
+  #adoreBtn:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 12px 40px rgba(181,97,122,0.65); }
+  #adoreBtn:active { transform: scale(0.97); }
+  #adoreText {
+    margin-top: 2.5rem; min-height: 120px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-style: italic;
+    font-size: clamp(1.1rem, 2.8vw, 1.45rem);
+    color: var(--blush); text-align: center; line-height: 1.7;
+    opacity: 0; transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    padding: 0 1rem;
+  }
+  #adoreText.show { opacity: 1; transform: translateY(0); }
+  #adoreText .emoji { font-size: 2rem; display: block; margin-bottom: 0.5rem; font-style: normal; }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center; padding: 4rem 1.5rem 5rem;
+    background: var(--night);
+    color: var(--rose-gold); font-size: 0.85rem; letter-spacing: 0.1em;
+  }
+  footer .big { font-family: var(--font-display); font-size: 2.5rem; display: block; margin-bottom: 0.5rem; color: var(--blush); }
+
+  /* ── DIVIDER ── */
+  .divider {
+    width: 60px; height: 2px;
+    background: linear-gradient(to right, var(--rose-gold), var(--blush));
+    margin: 1rem 0 2rem;
+  }
+
+  .letter-card { border-color: rgba(255,228,181,0.3); }
+  .letter-card::before { color: rgba(255,228,181,0.12); }
+
+  @media(max-width: 500px) {
+    .pulse-card { padding: 2rem 1.4rem; }
+    .photos-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+
+  /* ── PROPOSAL PAGE STYLES ── */
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --night: #0d0a1a;
+    --deep: #1a1030;
+    --rose-gold: #b5617a;
+    --blush: #f0b8c8;
+    --petal: #fce8ef;
+    --star: #ffe4b5;
+    --white: #fff8fb;
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+  }
+
+  #proposalPage {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #starfield { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .star {
+    position: absolute; width: 2px; height: 2px;
+    background: var(--star); border-radius: 50%;
+    animation: twinkle var(--d,3s) ease-in-out infinite alternate;
+    opacity: var(--o,0.6);
+  }
+  @keyframes twinkle {
+    from { opacity: var(--o); transform: scale(1); }
+    to   { opacity: calc(var(--o)*0.2); transform: scale(0.5); }
+  }
+
+  .heart-float {
+    position: fixed; bottom: -60px; font-size: 1.5rem;
+    animation: floatUp var(--dur,9s) linear infinite;
+    opacity: 0; pointer-events: none; z-index: 0;
+    left: var(--lft,50%);
+  }
+  @keyframes floatUp {
+    0% { bottom:-60px; opacity:0; transform:translateX(0) rotate(0deg);}
+    10% { opacity:.7;}
+    90% { opacity:.4;}
+    100% { bottom:100vh; opacity:0; transform:translateX(25px) rotate(15deg);}
+  }
+
+  /* ── MAIN CARD ── */
+  .stage {
+    position: relative; z-index: 2;
+    width: 100%; max-width: 560px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .from-tag {
+    font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--rose-gold); margin-bottom: 1rem;
+  }
+
+  .heart-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: beat 1.4s ease-in-out infinite;
+  }
+  @keyframes beat {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 6vw, 2.6rem);
+    line-height: 1.3;
+    background: linear-gradient(120deg, var(--blush), var(--star));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.6rem;
+  }
+
+  .sub {
+    color: var(--blush); font-size: 0.95rem; font-weight: 300;
+    margin-bottom: 2.8rem; letter-spacing: 0.03em;
+  }
+  .sub b { color: var(--star); font-weight: 700; }
+
+  /* ── BUTTONS ── */
+  .btn-zone {
+    position: relative;
+    height: 130px;
+    display: flex; align-items: center; justify-content: center;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .btn {
+    padding: 1rem 2.2rem;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    border: none; border-radius: 60px;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, padding 0.4s ease, font-size 0.4s ease;
+    white-space: nowrap;
+  }
+
+  #yesBtn {
+    background: linear-gradient(135deg, var(--rose-gold), #e07f9a);
+    color: #fff;
+    box-shadow: 0 6px 30px rgba(181,97,122,0.55);
+  }
+  #yesBtn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 12px 40px rgba(181,97,122,0.7); }
+  #yesBtn:active { transform: scale(0.96); }
+
+  #noBtn {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: var(--petal);
+    position: relative;
+  }
+  #noBtn.fleeing {
+    position: fixed;
+    transition: top 0.35s ease, left 0.35s ease, transform 0.35s ease;
+    z-index: 5;
+  }
+
+  .nudge {
+    margin-top: 1.8rem;
+    font-size: 0.85rem;
+    color: var(--rose-gold);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    font-style: italic;
+    min-height: 1.2rem;
+  }
+  .nudge.show { opacity: 1; }
+
+  /* ── RESULT STATE ── */
+  #result {
+    display: none;
+    animation: popIn 0.6s ease both;
+  }
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.85); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  #result .big-heart {
+    font-size: 4.5rem;
+    margin-bottom: 1.2rem;
+    animation: beat 1s ease-in-out infinite;
+  }
+  #result h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
+    background: linear-gradient(120deg, var(--blush), var(--star));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+  }
+  #result p {
+    color: var(--petal);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    font-family: var(--font-display);
+    font-style: italic;
+    max-width: 460px;
+    margin: 0 auto;
+  }
+  #result .sig {
+    margin-top: 1.6rem; font-style: normal;
+    color: var(--rose-gold); font-size: 0.8rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+  }
+
+  #confetti-layer {
+    position: fixed; inset: 0; pointer-events: none; z-index: 6; overflow: hidden;
+  }
+  .confetti-piece {
+    position: absolute; top: -20px; font-size: 1.4rem;
+    animation: confettiFall linear forwards;
+  }
+  @keyframes confettiFall {
+    to { transform: translateY(110vh) rotate(360deg); opacity: 0.2; }
+  }
+
+  @media(max-width: 420px) {
+    .btn-zone { gap: 1rem; }
+    .btn { padding: 0.85rem 1.6rem; font-size: 1rem; }
+  }
+
+
+  body { overflow: hidden; }
+</style>
+</head>
+<body>
+
+<div id="proposalPage">
+
+
+<div id="starfield-proposal"></div>
+<div id="hearts-proposal"></div>
+<div id="confetti-layer"></div>
+
+<div class="stage">
+
+  <div id="question">
+    <p class="from-tag">A Message From Awwal</p>
+    <div class="heart-icon">💖</div>
+    <h1>Khadijah,<br/>will you be mine?</h1>
+    <p class="sub">There's only one honest answer here, <b>habibti</b> 😉</p>
+
+    <div class="btn-zone">
+      <button id="yesBtn" class="btn">Yes 💍</button>
+      <button id="noBtn" class="btn">No</button>
+    </div>
+
+    <p class="nudge" id="nudge">that button doesn't work on you, try again 🤭</p>
+  </div>
+
+  <div id="result">
+    <div class="big-heart">💞</div>
+    <h2>I knew it.</h2>
+    <p>
+      Thank you for being mine, Khadijah. Across every mile and every time zone, you chose me — and I will spend every single day making sure you never regret it. 🌹
+    </p>
+    <p class="sig">— Awwal, completely yours</p>
+  </div>
+
+</div>
+
+
+</div>
+
+<div id="khadijahPage" style="display:none;">
+
+
+<!-- STARFIELD -->
+<div id="starfield"></div>
+
+<!-- FLOATING HEARTS -->
+<div id="hearts"></div>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-photo-ring">
+    <!-- Image 1 - teal hijab selfie -->
+    <img class="hero-photo" src="WhatsApp_Image_2026-06-21_at_1_16_25_PM.jpeg"
+         alt="Khadijah"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="hero-photo-placeholder" style="display:none">🌸</div>
+  </div>
+  <h1>Connected Across<br/>the Distance</h1>
+  <p class="subtitle">A love letter rendered in starlight, written for —</p>
+  <p class="name-badge">Khadijah 💖</p>
+  <div class="scroll-hint"><span>↓</span>scroll</div>
+</section>
+
+<!-- ═══ OUR STORY ═══ -->
+<section id="story">
+  <div class="section-inner">
+    <p class="section-label">Chapter One</p>
+    <h2 class="section-title">Our Story, So Far</h2>
+    <div class="divider"></div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-date">Day One</p>
+        <h3 class="tl-heading">The First Message 💬</h3>
+        <p class="tl-body">A simple "hello" that somehow felt like the beginning of something written in the stars. I didn't know it then, but that notification would change everything.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-date">Early Days</p>
+        <h3 class="tl-heading">The First Late Night Call 🌙</h3>
+        <p class="tl-body">We talked until the world went quiet. Hours dissolved. I stayed up way too late and had zero regrets. Your voice became my favourite sound.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-date">Getting Closer</p>
+        <h3 class="tl-heading">Our Longest Conversation 💭</h3>
+        <p class="tl-body">Dreams, fears, favourite memories, the kind of things you only say when you trust someone completely. I knew then that what we have is rare and real.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-date">Right Now</p>
+        <h3 class="tl-heading">Every Single Day 🌹</h3>
+        <p class="tl-body">You are the reason mornings feel lighter and evenings feel full. The distance is temporary. What we're building is not.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PHOTOS ═══ -->
+<section id="photos">
+  <div class="section-inner" style="padding-bottom:0;">
+    <p class="section-label">Gallery</p>
+    <h2 class="section-title">Every Picture, A Piece of You</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="photos-grid">
+    <div class="photo-card">
+      <img src="WhatsApp_Image_2026-06-21_at_1_16_25_PM.jpeg" alt="Khadijah"
+           onerror="this.parentNode.style.background='linear-gradient(135deg,#b5617a,#1a1030)';this.remove()">
+      <div class="photo-caption">
+        <p class="pc-id">No. 01 — Sunlit</p>
+        <p class="pc-msg">The first time I saw this picture, I forgot what I was about to say.</p>
+      </div>
+    </div>
+    <div class="photo-card">
+      <img src="WhatsApp_Image_2026-06-18_at_9_17_25_PM.jpeg" alt="Khadijah"
+           onerror="this.parentNode.style.background='linear-gradient(135deg,#e07f9a,#0d0a1a)';this.remove()">
+      <div class="photo-caption">
+        <p class="pc-id">No. 02 — Glow</p>
+        <p class="pc-msg">This is the face I picture every time my phone lights up with your name.</p>
+      </div>
+    </div>
+    <div class="photo-card">
+      <img src="WhatsApp_Image_2026-06-18_at_8_56_36_PM.jpeg" alt="Khadijah"
+           onerror="this.parentNode.style.background='linear-gradient(135deg,#2a0f2e,#b5617a)';this.remove()">
+      <div class="photo-caption">
+        <p class="pc-id">No. 03 — Soft</p>
+        <p class="pc-msg">No filter needed. You're effortlessly the most beautiful thing in any frame.</p>
+      </div>
+    </div>
+    <div class="photo-card">
+      <img src="WhatsApp_Image_2026-06-19_at_9_41_51_PM.jpeg" alt="Khadijah"
+           onerror="this.parentNode.style.background='linear-gradient(135deg,#1a1030,#e07f9a)';this.remove()">
+      <div class="photo-caption">
+        <p class="pc-id">No. 04 — Cozy</p>
+        <p class="pc-msg">Even bundled up half-asleep, you're still the best part of my day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ANTICIPATION ═══ -->
+<section id="anticipation">
+  <div class="section-inner">
+    <p class="section-label">From My Heart</p>
+    <h2 class="section-title">Everything I'm Holding Onto</h2>
+    <div class="divider"></div>
+    <div class="pulse-card">
+      <p>
+        Khadijah, I find myself thinking about the day I'll actually stand in front of you — not through a screen, not through a voice note, but <em>there</em>, in the same room, in the same air. I have rehearsed that first hug more times than I can count. I imagine it will feel like finally putting down something very heavy I didn't realise I'd been carrying.
+        <br/><br/>
+        The distance is just geography. What we have lives in something geography can't touch. Every notification, every late reply, every goodnight that arrives too early — I have kept them all. They are proof that something real is growing between us, and real things are worth waiting for.
+        <br/><br/>
+        I adore the way you are. Completely, effortlessly, undeniably you. And I am grateful every single day that the internet, of all things, is what brought you to me. 🌹
+      </p>
+      <p class="sig">— Written for you, Khadijah. Always.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ADORE BUTTON ═══ -->
+<section id="adore">
+  <div class="section-inner adore-center">
+    <p class="section-label">Interactive</p>
+    <h2 class="section-title" style="text-align:center">Need a Reminder?</h2>
+    <div class="divider" style="margin:1rem auto 2.5rem"></div>
+    <button id="adoreBtn">✨ Click for a Reason I Adore You</button>
+    <div id="adoreText"></div>
+  </div>
+</section>
+
+<!-- ═══ FINAL LETTER ═══ -->
+<section id="finalletter" style="background: radial-gradient(ellipse at 50% 80%, #2a0f30 0%, var(--night) 70%);">
+  <div class="section-inner">
+    <p class="section-label">Always & Forever</p>
+    <h2 class="section-title">A Letter Just for You</h2>
+    <div class="divider"></div>
+    <div class="pulse-card letter-card">
+      <p>
+        Khadijah, I find myself thinking about the day I'll actually stand in front of you — not through a screen, not through a voice note, but <em>there</em>, in the same room, in the same air. I have rehearsed that first hug more times than I can count. I imagine it will feel like finally putting down something very heavy I didn't realise I'd been carrying.
+        <br/><br/>
+        The distance is just geography. What we have lives in something geography can't touch. Every notification, every late reply, every goodnight that arrives too early — I have kept them all. They are proof that something real is growing between us, and real things are worth waiting for.
+        <br/><br/>
+        I adore the way you are. Completely, effortlessly, undeniably you. And I am grateful every single day that the internet, of all things, is what brought you to me. 🌹
+      </p>
+      <p class="sig">— Written for you, Khadijah. Always.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <span class="big">💖</span>
+  Made with more love than words can hold &mdash; for Khadijah, always.
+</footer>
+
+
+</div>
+
+<script>
+
+  /* ══════════════ PROPOSAL PAGE LOGIC ══════════════ */
+  
+  /* starfield */
+  (function(){
+    const sf = document.getElementById('starfield-proposal');
+    for(let i=0;i<120;i++){
+      const s = document.createElement('div');
+      s.className='star';
+      s.style.cssText = `
+        left:${Math.random()*100}%;
+        top:${Math.random()*100}%;
+        --d:${2+Math.random()*5}s;
+        --o:${0.3+Math.random()*0.7};
+        width:${Math.random()<0.2?3:2}px;
+        height:${Math.random()<0.2?3:2}px;
+        animation-delay:${Math.random()*6}s;
+      `;
+      sf.appendChild(s);
+    }
+  })();
+
+  /* floating hearts */
+  (function(){
+    const c = document.getElementById('hearts-proposal');
+    const syms = ['💖','💗','✨','🌹','💕'];
+    function spawn(){
+      const h = document.createElement('div');
+      h.className='heart-float';
+      h.textContent = syms[Math.floor(Math.random()*syms.length)];
+      h.style.cssText = `--lft:${5+Math.random()*90}%; --dur:${8+Math.random()*7}s;`;
+      c.appendChild(h);
+      setTimeout(()=>h.remove(), 16000);
+    }
+    for(let i=0;i<5;i++) setTimeout(spawn, i*1000);
+    setInterval(spawn, 2200);
+  })();
+
+  /* ── RUNAWAY NO BUTTON ── */
+  const noBtn = document.getElementById('noBtn');
+  const yesBtn = document.getElementById('yesBtn');
+  const nudge = document.getElementById('nudge');
+  const nudges = [
+    "that button doesn't work on you, try again 🤭",
+    "nope, not letting you click that 😏",
+    "you can chase it but it won't let you catch it 💨",
+    "the universe said yes already, just go with it 🌹",
+    "okay this is getting silly, just say yes 😅",
+    "I promise yes is way easier to click 💖",
+    "the No button has officially retired 😌",
+  ];
+  let nudgeIndex = 0;
+  let dodgeCount = 0;
+
+  function moveNoButton(){
+    if(!noBtn.classList.contains('fleeing')){
+      const r = noBtn.getBoundingClientRect();
+      noBtn.style.position = 'fixed';
+      noBtn.style.left = r.left + 'px';
+      noBtn.style.top = r.top + 'px';
+      noBtn.style.margin = '0';
+      // force reflow so the transition kicks in next frame
+      void noBtn.offsetWidth;
+      noBtn.classList.add('fleeing');
+    }
+
+    const margin = 24;
+    const btnW = noBtn.offsetWidth;
+    const btnH = noBtn.offsetHeight;
+    const maxX = window.innerWidth - btnW - margin;
+    const maxY = window.innerHeight - btnH - margin;
+
+    const newX = margin + Math.random() * Math.max(maxX - margin, 50);
+    const newY = margin + Math.random() * Math.max(maxY - margin, 50);
+
+    noBtn.style.left = newX + 'px';
+    noBtn.style.top = newY + 'px';
+
+    dodgeCount++;
+    nudge.textContent = nudges[Math.min(dodgeCount-1, nudges.length-1)];
+    nudge.classList.add('show');
+
+    // shrink the no button gradually each dodge, then vanish completely
+    if(dodgeCount >= 6){
+      noBtn.style.transition = 'opacity 0.5s ease, top 0.35s ease, left 0.35s ease';
+      noBtn.style.opacity = '0';
+      noBtn.style.pointerEvents = 'none';
+      setTimeout(()=>{ noBtn.style.display = 'none'; }, 500);
+      nudge.textContent = "see? only one answer left 💖";
+    }
+  }
+
+  // desktop: dodge on hover; mobile: dodge on touchstart / click attempt
+  noBtn.addEventListener('mouseenter', moveNoButton);
+  noBtn.addEventListener('touchstart', (e)=>{ e.preventDefault(); moveNoButton(); }, {passive:false});
+  noBtn.addEventListener('click', (e)=>{ e.preventDefault(); moveNoButton(); });
+
+  /* ── YES BUTTON ── */
+  yesBtn.addEventListener('click', ()=>{
+    document.getElementById('question').style.display = 'none';
+    const result = document.getElementById('result');
+    result.style.display = 'block';
+    launchConfetti();
+  });
+
+  function launchConfetti(){
+    const layer = document.getElementById('confetti-layer');
+    const syms = ['💖','💕','✨','🌹','💗','🎉'];
+    for(let i=0;i<40;i++){
+      const p = document.createElement('div');
+      p.className = 'confetti-piece';
+      p.textContent = syms[Math.floor(Math.random()*syms.length)];
+      p.style.left = Math.random()*100 + 'vw';
+      p.style.animationDuration = (2.5 + Math.random()*2) + 's';
+      p.style.animationDelay = (Math.random()*0.6) + 's';
+      p.style.fontSize = (1 + Math.random()*1.2) + 'rem';
+      layer.appendChild(p);
+      setTimeout(()=>p.remove(), 5000);
+    }
+  }
+
+
+  /* ══════════════ KHADIJAH PAGE LOGIC ══════════════ */
+  
+  /* ── STARFIELD ── */
+  (function(){
+    const sf = document.getElementById('starfield');
+    for(let i=0;i<160;i++){
+      const s = document.createElement('div');
+      s.className = 'star';
+      s.style.cssText = `
+        left:${Math.random()*100}%;
+        top:${Math.random()*100}%;
+        --d:${2+Math.random()*5}s;
+        --o:${0.3+Math.random()*0.7};
+        width:${Math.random()<0.2?3:2}px;
+        height:${Math.random()<0.2?3:2}px;
+        animation-delay:${Math.random()*6}s;
+      `;
+      sf.appendChild(s);
+    }
+  })();
+
+  /* ── FLOATING HEARTS ── */
+  (function(){
+    const container = document.getElementById('hearts');
+    const symbols = ['💖','💗','💓','🌹','✨','💕','🌸'];
+    function spawnHeart(){
+      const h = document.createElement('div');
+      h.className = 'heart-float';
+      h.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+      h.style.cssText = `
+        --lft:${5+Math.random()*90}%;
+        --dur:${7+Math.random()*8}s;
+        --del:0s;
+      `;
+      container.appendChild(h);
+      const dur = (7+Math.random()*8)*1000;
+      setTimeout(()=>h.remove(), dur+500);
+    }
+    for(let i=0;i<6;i++) setTimeout(spawnHeart, i*900);
+    setInterval(spawnHeart, 1800);
+  })();
+
+  /* ── SCROLL REVEAL ── */
+  (function(){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('visible');
+          // stagger children if timeline item
+        }
+      });
+    },{threshold:0.15});
+
+    document.querySelectorAll('.tl-item, .photo-card').forEach((el,i)=>{
+      el.style.transitionDelay = (i*0.12)+'s';
+      io.observe(el);
+    });
+  })();
+
+  /* ── ADORE BUTTON ── */
+  (function(){
+    const notes = [
+      { emoji:'🌙', text:'You make even the longest nights feel like they hold something worth staying awake for.' },
+      { emoji:'✨', text:'The way your mind works — the things you notice, the way you say them — is genuinely one of my favourite things in the world.' },
+      { emoji:'🌹', text:'I adore you because you are kind in a way that costs something, and you give it anyway.' },
+      { emoji:'💬', text:'Every voice note you send, I replay. Not because I missed something — just because I want to.' },
+      { emoji:'💖', text:'You are the first person I want to share things with — good news, bad news, ridiculous news.' },
+      { emoji:'🌸', text:'Your smile exists in my imagination rent-free and honestly it can stay forever.' },
+      { emoji:'🌟', text:'The distance is annoying. You are not. You are everything the distance is trying to keep me from.' },
+      { emoji:'💕', text:'I adore you for being real with me, in a world where everything is performance.' },
+      { emoji:'☕', text:'Someday I want to bring you coffee in the morning and watch you decide you actually wanted tea. I will not mind at all.' },
+      { emoji:'🌌', text:'Khadijah — across every timezone and every timezone change — you are worth every second of the wait.' },
+    ];
+    let last = -1;
+    const btn = document.getElementById('adoreBtn');
+    const box = document.getElementById('adoreText');
+    btn.addEventListener('click', ()=>{
+      let idx;
+      do { idx = Math.floor(Math.random()*notes.length); } while(idx===last);
+      last = idx;
+      const n = notes[idx];
+      box.classList.remove('show');
+      setTimeout(()=>{
+        box.innerHTML = `<span class="emoji">${n.emoji}</span>${n.text}`;
+        box.classList.add('show');
+      },300);
+    });
+  })();
+
+
+  /* ══════════════ TRANSITION: YES → REVEAL FULL PAGE ══════════════ */
+  document.getElementById('yesBtn').addEventListener('click', function(){
+    setTimeout(function(){
+      document.getElementById('proposalPage').style.transition = 'opacity 0.8s ease';
+      document.getElementById('proposalPage').style.opacity = '0';
+      setTimeout(function(){
+        document.getElementById('proposalPage').style.display = 'none';
+        document.body.style.overflow = 'auto';
+        var khPage = document.getElementById('khadijahPage');
+        khPage.style.display = 'block';
+        khPage.style.opacity = '0';
+        khPage.style.transition = 'opacity 1s ease';
+        requestAnimationFrame(function(){
+          khPage.style.opacity = '1';
+        });
+        window.scrollTo(0,0);
+      }, 800);
+    }, 2600);
+  });
+
+</script>
+</body>
+</html>
